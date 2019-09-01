@@ -1,0 +1,35 @@
+#server:
+  #port: 8081
+#第一种配置方法：
+#name: 于晨
+#age: 22
+
+#第二种配置方法
+#name: 于晨
+#age: 22
+#content: "name : ${name} , age: ${age}"
+
+#第三种配置方法
+#girl:
+  #name: 于晨
+  #age: 22
+spring:
+  profiles:
+    active: dev
+  #数据库链接信息配置
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/dbgirl
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+      #ddl-auto总共有五个属性
+        # create：每次启动程序都会根据实体类创建一个对应的表，若表已经存在，则删除重新创建，数据也会清空
+        # update：第一次启动程序都会根据实体类创建一个对应的表，若表存在，则不会删除表，数据不会清空
+        # none：什么都不执行
+        # create-drop：当应用停下来的时候就会把表删掉
+        # validate：会验证类里边属性和表结构是否一致，不一致会报错
+      ddl-auto: update
+    show-sql: true
